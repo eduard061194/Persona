@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections;
+namespace Programa
+{
+class persona
+{
+public int codigo;
+public string nombre;
+public string facebook;
+public string telefono;
+public void  recaudarDatos(){
+Console.WriteLine("Código:");
+this.codigo = int.Parse(Console.ReadLine());
+Console.WriteLine("Nombre:");
+this.nombre = Console.ReadLine();
+Console.WriteLine("Facebook:");
+this.facebook = Console.ReadLine();
+Console.WriteLine("Cual es telefono:");
+this.telefono = Console.ReadLine();
+}
+
+}
+
+class Principal{
+public static void Main(string[] args)
+{ string pedit;
+Hashtable Has = new Hashtable();
+for (int i = 0; i <= 4; i++){
+	persona p = new persona();
+	p.recaudarDatos();
+Has.Add(p.codigo,p);
+Console.Clear();
+}
+ICollection keysCollection = Has.Keys;
+foreach(int llave in  keysCollection){
+	persona p =  (persona) Has[llave];
+	
+	Console.WriteLine("Código:\n " + p.codigo + "\nNombre:\n " + p.nombre + "\nFacebook:\n " + p.facebook + " \nTélefono:" + p.telefono);
+}
+int editar;
+for (int c =0; c<2; c++){
+Console.WriteLine("Cual ID quieres editar?");
+editar =  int.Parse(Console.ReadLine());
+persona p =  (persona) Has[editar];
+p.nombre  = Console.ReadLine();
+p.telefono  = Console.ReadLine();
+p.facebook  = Console.ReadLine();
+Has[editar]= p;
+Console.WriteLine("Código:\n " + p.codigo + "\nNombre:\n " + p.nombre + "\nFacebook:\n " + p.facebook + " \nTélefono:" + p.telefono);
+}
+
+
+Console.Read();
+}
+}
+}
